@@ -238,13 +238,10 @@
     <nav class="fixed w-full top-0 z-50 transition-all duration-300" :class="scrolled ? 'bg-white shadow-2xl' : 'bg-white/80 backdrop-blur-md'" @scroll.window="scrolled = window.scrollY > 50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <div class="flex items-center gap-3">
-                    <!-- <div class="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center">
-                        <span class="text-white font-black text-lg">P</span>
-                    </div>
-                    <div class="gradient-text font-black text-xl">PrakTax</div> -->
-                     <img src="../logo.png" alt="Logo asabisa" class="hero-image relative z-10 w-full">
-                </div>
+             <div class="flex items-center gap-2">
+                <img src="../logo.png" alt="Logo asabisa" class="h-10 w-auto object-contain">
+                <div class="gradient-text font-black text-xl hidden sm:block">PrakTax</div>
+            </div>
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex gap-8 items-center">
