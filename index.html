@@ -1,83 +1,857 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
+    <title>PrakTax - Pelatihan Coretax Praktis & Aman | AsaBisa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
         
-        header {
-            background: #007BFF;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
+        * {
+            font-family: 'Poppins', sans-serif;
         }
-        
-        section {
-            padding: 20px;
+
+        .gradient-text {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        
-        footer {
-            background: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
         }
-        
-        .button {
-            background: #28a745;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
+
+        .gradient-bg-dark {
+            background: linear-gradient(135deg, #f7931e 0%, #ff6b35 100%);
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(255, 107, 53, 0.25);
+        }
+
+        .float-animation {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 1s ease-out forwards;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-in-right {
+            animation: slideInRight 1s ease-out forwards;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .counter-number {
+            font-weight: 900;
+            font-size: 2.5rem;
+            line-height: 1;
+        }
+
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 25px;
+            box-shadow: 0 30px 80px rgba(255, 107, 53, 0.3);
+            transition: all 0.4s ease;
             cursor: pointer;
-            text-decoration: none;
         }
-        
-        .button:hover {
-            background: #218838;
+
+        .hero-image:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 40px 100px rgba(255, 107, 53, 0.4);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: auto;
+            padding: 0;
+            border-radius: 15px;
+            width: 95%;
+            max-width: 1000px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: slideInRight 0.4s ease;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 15px;
+        }
+
+        .close-modal {
+            color: white;
+            position: absolute;
+            right: 30px;
+            top: 20px;
+            font-size: 45px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: #ff6b35;
+            transform: rotate(90deg);
+        }
+
+        .price-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        .badge-hot {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff3b30 0%, #ff6b35 100%);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            box-shadow: 0 8px 20px rgba(255, 59, 48, 0.3);
+        }
+
+        .shimmer {
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        .sticky-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            animation: slideInRight 0.5s ease;
+        }
+
+        @media (max-width: 768px) {
+            .sticky-cta {
+                bottom: 10px;
+                right: 10px;
+            }
         }
     </style>
 </head>
+<body class="bg-gray-50" x-data="{ scrolled: false, mobileOpen: false }">
+    
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Full Screen Image" class="modal-image">
+        </div>
+    </div>
 
-<body>
-    <header>
-        <h1>Welcome to Our Landing Page</h1>
-        <p>Your subtitle or tagline goes here</p>
-    </header>
+    <!-- Navbar -->
+    <nav class="fixed w-full top-0 z-50 transition-all duration-300" :class="scrolled ? 'bg-white shadow-2xl' : 'bg-white/80 backdrop-blur-md'" @scroll.window="scrolled = window.scrollY > 50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center">
+                        <span class="text-white font-black text-lg">P</span>
+                    </div>
+                    <div class="gradient-text font-black text-xl">PrakTax</div>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex gap-8 items-center">
+                    <a href="#masalah" class="text-gray-700 hover:gradient-text font-medium transition">Masalah</a>
+                    <a href="#solusi" class="text-gray-700 hover:gradient-text font-medium transition">Solusi</a>
+                    <a href="#instruktur" class="text-gray-700 hover:gradient-text font-medium transition">Instruktur</a>
+                    <a href="#jadwal" class="text-gray-700 hover:gradient-text font-medium transition">Jadwal</a>
+                    <a href="#faq" class="text-gray-700 hover:gradient-text font-medium transition">FAQ</a>
+                    <button onclick="document.getElementById('daftar').scrollIntoView({behavior: 'smooth'})" class="gradient-bg text-white px-6 py-2.5 rounded-lg font-bold hover:shadow-lg transition transform hover:scale-105">
+                        Daftar →
+                    </button>
+                </div>
 
-    <section>
-        <h2>About Us</h2>
-        <p>This section contains information about us and what we do.</p>
+                <!-- Mobile Menu Toggle -->
+                <button @click="mobileOpen = !mobileOpen" class="md:hidden text-gray-700 hover:gradient-text">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div x-show="mobileOpen" class="md:hidden pb-4 space-y-2 border-t border-gray-200 pt-4">
+                <a href="#masalah" class="block text-gray-700 py-2 hover:gradient-text font-medium">Masalah</a>
+                <a href="#solusi" class="block text-gray-700 py-2 hover:gradient-text font-medium">Solusi</a>
+                <a href="#instruktur" class="block text-gray-700 py-2 hover:gradient-text font-medium">Instruktur</a>
+                <a href="#jadwal" class="block text-gray-700 py-2 hover:gradient-text font-medium">Jadwal</a>
+                <a href="#faq" class="block text-gray-700 py-2 hover:gradient-text font-medium">FAQ</a>
+                <button onclick="document.getElementById('daftar').scrollIntoView({behavior: 'smooth'})" class="gradient-bg text-white px-6 py-2.5 rounded-lg font-bold w-full mt-2">
+                    Daftar Sekarang →
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-40 pb-24 px-4 relative overflow-hidden bg-gradient-to-b from-orange-50 to-gray-50">
+        <div class="absolute top-40 left-0 w-96 h-96 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 float-animation"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 float-animation" style="animation-delay: 2s;"></div>
+        
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="badge-hot">🚀 Revolusi Pelatihan Pajak Digital</div>
+
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-black mb-6 text-gray-900 leading-tight slide-in-left">
+                        Jangan Jadi <span class="gradient-text">Korban</span> Coretax.<br>
+                        <span class="gradient-text">Kuasai</span> Sekarang.
+                    </h1>
+
+                    <p class="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed max-w-xl slide-in-left" style="animation-delay: 0.2s;">
+                        1 kesalahan input = risiko pajak bertahun-tahun. Tapi dengan praktik aman di PrakTax selama 6 bulan, kamu akan <strong>benar-benar mahir</strong> tanpa rasa takut.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 mb-12 slide-in-left" style="animation-delay: 0.4s;">
+                        <button onclick="document.getElementById('daftar').scrollIntoView({behavior: 'smooth'})" class="gradient-bg text-white px-8 py-4 rounded-lg font-bold text-lg hover:shadow-2xl transition transform hover:scale-105">
+                            🎯 Daftar Sekarang
+                        </button>
+                        <button onclick="document.getElementById('masalah').scrollIntoView({behavior: 'smooth'})" class="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-bold text-lg hover:border-orange-500 hover:bg-orange-50 transition">
+                            Lihat Detail
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-4 slide-in-left" style="animation-delay: 0.6s;">
+                        <div class="p-4 bg-white rounded-xl border border-gray-200 shadow-sm">
+                            <div class="counter-number gradient-text">500+</div>
+                            <p class="text-gray-600 font-medium">Alumni Puas</p>
+                        </div>
+                        <div class="p-4 bg-white rounded-xl border border-gray-200 shadow-sm">
+                            <div class="counter-number gradient-text">6</div>
+                            <p class="text-gray-600 font-medium">Bulan Akses</p>
+                        </div>
+                        <div class="p-4 bg-white rounded-xl border border-gray-200 shadow-sm">
+                            <div class="counter-number gradient-text">98%</div>
+                            <p class="text-gray-600 font-medium">Rating ⭐</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide-in-right">
+                    <div class="relative">
+                        <div class="absolute inset-0 gradient-bg rounded-3xl blur-2xl opacity-30"></div>
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 600'%3E%3Crect fill='%23ff6b35' width='500' height='600'/%3E%3Ctext x='50%' y='50%' font-size='32' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3EPRAKTAX TRAINING%3C/text%3E%3Ctext x='50%' y='60%' font-size='18' fill='white' text-anchor='middle'%3E6 Bulan Akses Penuh%3C/text%3E%3C/svg%3E" alt="PrakTax Training" class="hero-image relative z-10 w-full">
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section>
-        <h2>Services</h2>
-        <ul>
-            <li>Service 1</li>
-            <li>Service 2</li>
-            <li>Service 3</li>
-        </ul>
+    <!-- Masalah Section -->
+    <section id="masalah" class="py-24 px-4 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <div class="badge-hot" style="justify-content: center;">📊 Kenapa Banyak Panik?</div>
+                <h2 class="text-5xl md:text-6xl font-black text-gray-900 mt-4">
+                    Masalah yang Kamu <span class="gradient-text">Hadapi</span>
+                </h2>
+                <p class="text-xl text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Coretax wajib. Tapi tidak semua siap menghadapinya.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Problem 1 -->
+                <div class="card-hover bg-gradient-to-br from-red-50 to-orange-50 p-8 rounded-2xl border-2 border-red-100 fade-in" style="animation-delay: 0s;">
+                    <div class="text-6xl mb-4">😰</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Takut Salah Input</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Satu kesalahan kecil bisa jadi SP2DK yang rumit. Sistem tidak bisa dinegosiasi seperti pegawai pajak manual.
+                    </p>
+                </div>
+
+                <!-- Problem 2 -->
+                <div class="card-hover bg-gradient-to-br from-red-50 to-orange-50 p-8 rounded-2xl border-2 border-red-100 fade-in" style="animation-delay: 0.1s;">
+                    <div class="text-6xl mb-4">❓</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Bingung Alur Menu</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Coretax punya ratusan menu. Tidak tahu mana yang harus diklik duluan. Data sering tidak valid.
+                    </p>
+                </div>
+
+                <!-- Problem 3 -->
+                <div class="card-hover bg-gradient-to-br from-red-50 to-orange-50 p-8 rounded-2xl border-2 border-red-100 fade-in" style="animation-delay: 0.2s;">
+                    <div class="text-6xl mb-4">📉</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Tidak Berani Ambil Klien</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Akuntan muda ragu ambil klien Coretax. Takut reputation damage. Khawatir klien komplain.
+                    </p>
+                </div>
+
+                <!-- Problem 4 -->
+                <div class="card-hover bg-gradient-to-br from-red-50 to-orange-50 p-8 rounded-2xl border-2 border-red-100 fade-in" style="animation-delay: 0.3s;">
+                    <div class="text-6xl mb-4">💸</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Risiko Denda Besar</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Rekonsiliasi fiskal salah? Denda bisa puluhan juta. Belajar dari kesalahan nyata sangat mahal.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-16 p-8 bg-gradient-to-r from-orange-100 to-yellow-100 rounded-2xl border-2 border-orange-300">
+                <p class="text-center text-gray-800 text-lg">
+                    <span class="font-black text-orange-600 text-xl">💡 Realitas:</span> Coretax akan terus dipakai. Pertanyaannya bukan "mau atau tidak", tapi <span class="font-black text-orange-600">"siapa yang lebih siap daripada kompetitor?"</span>
+                </p>
+            </div>
+        </div>
     </section>
 
-    <section>
-        <h2>Contact Us</h2>
-        <p>Feel free to reach out through our social media or fill out our contact form.</p>
-        <a href="#" class="button">Get Started</a>
+    <!-- Solusi Section -->
+    <section id="solusi" class="py-24 px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-orange-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 float-animation"></div>
+        
+        <div class="max-w-5xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-orange-500/20 text-orange-300 px-4 py-2 rounded-full text-sm font-bold mb-4 border border-orange-500/30">
+                    ✅ SOLUSI TERBUKTI
+                </div>
+                <h2 class="text-5xl md:text-6xl font-black mb-4">
+                    Solusi: <span class="gradient-text">PrakTax</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                    Bukan webinar teori biasa. Ini simulasi <strong>praktik langsung 6 bulan</strong> dengan sistem dummy Coretax.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-white/10 backdrop-blur-lg p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition fade-in" style="animation-delay: 0s;">
+                    <div class="text-6xl mb-4">✅</div>
+                    <h3 class="text-2xl font-bold mb-3">Praktik Langsung</h3>
+                    <p class="text-gray-300">
+                        Kamu yang klik, isi, submit. Bukan nonton orang praktik. Real hands-on experience.
+                    </p>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-lg p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition fade-in" style="animation-delay: 0.1s;">
+                    <div class="text-6xl mb-4">🔒</div>
+                    <h3 class="text-2xl font-bold mb-3">100% Risk-Free</h3>
+                    <p class="text-gray-300">
+                        Sistem dummy (PrakTax). Bisa salah, bisa eksplor, tanpa takut denda atau error.
+                    </p>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-lg p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition fade-in" style="animation-delay: 0.2s;">
+                    <div class="text-6xl mb-4">⏱️</div>
+                    <h3 class="text-2xl font-bold mb-3">6 Bulan Penuh</h3>
+                    <p class="text-gray-300">
+                        PPh OP, PPh Badan, Pasal 25/29, rekonsiliasi fiskal. Semua bisa diulang berkali-kali.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white/5 backdrop-blur-lg p-12 rounded-2xl border border-white/20">
+                <h3 class="text-3xl font-bold mb-8">📦 Yang Kamu Dapatkan</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="flex items-start gap-4 fade-in" style="animation-delay: 0.3s;">
+                        <span class="text-4xl">🎓</span>
+                        <div>
+                            <h4 class="font-bold text-xl mb-1">Pelatihan Live 2 Hari</h4>
+                            <p class="text-gray-300">Langsung dengan praktisi Coretax, akademisi pajak, & praktisi sistem.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 fade-in" style="animation-delay: 0.4s;">
+                        <span class="text-4xl">💾</span>
+                        <div>
+                            <h4 class="font-bold text-xl mb-1">Akses PrakTax 6 Bulan</h4>
+                            <p class="text-gray-300">Simulasi sistem dummy lengkap. Tanpa batas praktik & eksperimen.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 fade-in" style="animation-delay: 0.5s;">
+                        <span class="text-4xl">📚</span>
+                        <div>
+                            <h4 class="font-bold text-xl mb-1">Materi PPh OP & Badan</h4>
+                            <p class="text-gray-300">Dari dasar sampai rekonsiliasi fiskal. Video + slide + job aid.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 fade-in" style="animation-delay: 0.6s;">
+                        <span class="text-4xl">💬</span>
+                        <div>
+                            <h4 class="font-bold text-xl mb-1">Support Q&A Seumur Hidup</h4>
+                            <p class="text-gray-300">Forum, grup WhatsApp alumni, sesi follow-up kapan pun butuh.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 fade-in" style="animation-delay: 0.7s;">
+                        <span class="text-4xl">🎯</span>
+                        <div>
+                            <h4 class="font-bold text-xl mb-1">Sertifikat Kompetensi</h4>
+                            <p class="text-gray-300">Resmi dari AsaBisa setelah menyelesaikan praktik & assessment.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 fade-in" style="animation-delay: 0.8s;">
+                        <span class="text-4xl">🚀</span>
+                        <div>
+                            <h4 class="font-bold text-xl mb-1">Alumni Network 500+</h4>
+                            <p class="text-gray-300">Networking dengan praktisi pajak lain. Kesempatan kolaborasi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Your Company. All rights reserved.</p>
-    </footer>
-</body>
+    <!-- Instruktur Section -->
+    <section id="instruktur" class="py-24 px-4 bg-gray-50">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <div class="badge-hot" style="justify-content: center;">👨‍🏫 Tim Expert</div>
+                <h2 class="text-5xl md:text-6xl font-black text-gray-900 mt-4">
+                    Belajar dari <span class="gradient-text">Para Ahli</span>
+                </h2>
+                <p class="text-xl text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Kombinasi unik: Praktisi + Akademisi + Konsultan bersertifikat
+                </p>
+            </div>
 
-</html>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card-hover bg-white p-8 rounded-2xl border-2 border-gray-200 shadow-lg fade-in" style="animation-delay: 0s;">
+                    <div class="w-full h-56 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl mb-6 flex items-center justify-center">
+                        <span class="text-6xl">👤</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">M. Aris Rahman Hakim</h3>
+                    <p class="text-orange-600 font-bold mb-3">Konsultan Pajak | AsaBisa</p>
+                    <p class="text-gray-700 text-sm leading-relaxed">
+                        Praktisi pajak 15+ tahun. Spesialisasi Coretax & pelaporan SPT orang pribadi. Sudah bimbing 200+ klien sukses.
+                    </p>
+                    <div class="mt-4 flex gap-2">
+                        <span class="text-xs bg-orange-100 text-orange-700 px-3 py-1 rounded-full font-bold">S.Ak.</span>
+                        <span class="text-xs bg-orange-100 text-orange-700 px-3 py-1 rounded-full font-bold">CTP</span>
+                    </div>
+                </div>
+
+                <div class="card-hover bg-white p-8 rounded-2xl border-2 border-blue-200 shadow-lg fade-in" style="animation-delay: 0.1s;">
+                    <div class="w-full h-56 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl mb-6 flex items-center justify-center">
+                        <span class="text-6xl">👤</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Hendri Sopian</h3>
+                    <p class="text-orange-600 font-bold mb-3">Expert Coretax Korporat</p>
+                    <p class="text-gray-700 text-sm leading-relaxed">
+                        Ahli praktik Coretax untuk perusahaan. Pengalaman menangani klien korporat besar & kompleks. Trainer di 5+ perusahaan.
+                    </p>
+                    <div class="mt-4 flex gap-2">
+                        <span class="text-xs bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-bold">S.A.P.</span>
+                        <span class="text-xs bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-bold">S.M.</span>
+                    </div>
+                </div>
+
+                <div class="card-hover bg-white p-8 rounded-2xl border-2 border-green-200 shadow-lg fade-in" style="animation-delay: 0.2s;">
+                    <div class="w-full h-56 bg-gradient-to-br from-green-400 to-green-600 rounded-xl mb-6 flex items-center justify-center">
+                        <span class="text-6xl">👤</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Imam Muhasan</h3>
+                    <p class="text-orange-600 font-bold mb-3">Akademisi Hukum Pajak</p>
+                    <p class="text-gray-700 text-sm leading-relaxed">
+                        Dosen & peneliti hukum pajak. Ahli aspek legal & regulasi Coretax. Penerbit 3 buku pajak. Advisor untuk kantor pajak.
+                    </p>
+                    <div class="mt-4 flex gap-2">
+                        <span class="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full font-bold">S.H.</span>
+                        <span class="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full font-bold">M.H.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jadwal & Harga Section -->
+    <section id="jadwal" class="py-24 px-4 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <div class="badge-hot" style="justify-content: center;">📅 8 & 15 MARET 2026</div>
+                <h2 class="text-5xl md:text-6xl font-black text-gray-900 mt-4">
+                    Jadwal & <span class="gradient-text">Investasi</span>
+                </h2>
+                <p class="text-xl text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Pilih paket yang sesuai. Daftar sekarang sebelum kuota penuh.
+                </p>
+            </div>
+
+            <!-- Schedule Info -->
+            <div class="bg-gradient-to-r from-orange-50 to-yellow-50 border-2 border-orange-200 rounded-2xl p-8 mb-12 fade-in">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">📅 Hari 1: 8 Maret 2026</h3>
+                        <div class="space-y-3">
+                            <p class="text-gray-700"><strong>Topik:</strong> SPT PPh Orang Pribadi</p>
+                            <p class="text-gray-700"><strong>Waktu:</strong> 09:00 - 16:00 WIB (7 jam)</p>
+                            <p class="text-gray-700"><strong>Materi:</strong></p>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Soal & Pembahasan PPh OP UMKM</li>
+                                <li>Input Data SPT di Coretax</li>
+                                <li>Pasal 25/29 Metode Pencatatan</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">📅 Hari 2: 15 Maret 2026</h3>
+                        <div class="space-y-3">
+                            <p class="text-gray-700"><strong>Topik:</strong> SPT PPh Badan</p>
+                            <p class="text-gray-700"><strong>Waktu:</strong> 09:00 - 16:00 WIB (7 jam)</p>
+                            <p class="text-gray-700"><strong>Materi:</strong></p>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Soal & Pembahasan PPh Badan UMKM</li>
+                                <li>Input Data SPT Badan di Coretax</li>
+                                <li>Rekonsiliasi Fiskal</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Single -->
+                <div class="card-hover bg-white p-8 rounded-2xl border-2 border-gray-200 relative fade-in" style="animation-delay: 0.1s;">
+                    <div class="price-badge">Single</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Paket Individual</h3>
+                    <p class="text-gray-600 mb-6 text-sm">Cocok untuk yang baru mulai</p>
+                    
+                    <div class="mb-8">
+                        <span class="text-5xl font-black gradient-text">Rp 599rb</span>
+                        <p class="text-gray-600 text-sm mt-2">💰 Akses 6 bulan penuh</p>
+                    </div>
+
+                    <ul class="space-y-3 mb-8 text-gray-700">
+                        <li class="flex items-center gap-3">
+                            <svg class="w-6 h-6 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Pelatihan live 2 hari (Zoom)</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-6 h-6 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Akses PrakTax 6 bulan</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-6 h-6 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Materi PPh OP lengkap</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-6 h-6 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Forum Q&A 6 bulan</span>
+                        </li>
+                    </ul>
+
+                    <button onclick="window.open('https://wa.me/?text=Halo%20AsaBisa%21%20Saya%20mau%20daftar%20paket%20Single%20PrakTax', '_blank')" class="w-full bg-gray-200 text-gray-900 py-3 rounded-lg font-bold hover:bg-gray-300 transition">
+                        Pilih Paket Ini
+                    </button>
+                </div>
+
+                <!-- Bundle (Recommended) -->
+                <div class="card-hover bg-gradient-to-br from-orange-500 to-orange-600 text-white p-8 rounded-2xl border-2 border-orange-400 relative fade-in" style="animation-delay: 0.2s;">
+                    <div class="price-badge" style="background: white; color: #ff6b35;">
+                        ⭐ TERBAIK
+                    </div>
+
+                    <h3 class="text-2xl font-bold mb-2">Bundle Komplit</h3>
+                    <p class="text-orange-100 mb-6 text-sm">Hemat Rp 440rb + Bonus</p>
+                    
+                    <div class="mb-8">
+                        <span class="text-5xl font-black">Rp 759rb</span>
+                        <p class="text-orange-100 text-sm mt-2 line-through opacity-75">Nilai normal: Rp 1.199rb</p>
+                    </div>
+
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3">
+                            <svg class="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Pelatihan live 2 hari (Zoom)</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Akses PrakTax 6 bulan</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span><strong>Materi PPh OP + PPh Badan</strong></span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span><strong>BONUS: Rekonsiliasi Fiskal</strong></span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Forum Q&A prioritas</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span><strong>Sertifikat + Alumni Network</strong></span>
+                        </li>
+                    </ul>
+
+                    <button onclick="window.open('https://wa.me/?text=Halo%20AsaBisa%21%20Saya%20mau%20daftar%20paket%20Bundle%20PrakTax', '_blank')" class="w-full bg-white text-orange-600 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
+                        🎁 Daftar Bundle Sekarang
+                    </button>
+                </div>
+            </div>
+
+            <!-- Value Proposition -->
+            <div class="bg-gradient-to-r from-orange-100 to-yellow-100 p-10 rounded-2xl border-2 border-orange-300 text-center fade-in">
+                <p class="text-gray-800 text-lg">
+                    <span class="font-black text-orange-600 text-xl">💰 Bandingkan Risiko:</span><br/>
+                    <span class="font-bold">1 kesalahan kecil = denda puluhan juta.</span><br/>
+                    <span class="text-xl font-black text-orange-600">Investasi Rp 599rb untuk skill seumur hidup?</span><br/>
+                    Itu ROI terbaik yang bisa kamu dapat tahun ini.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 px-4 bg-gray-50">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-16">
+                <div class="badge-hot" style="justify-content: center;">❓ PERTANYAAN UMUM</div>
+                <h2 class="text-5xl md:text-6xl font-black text-gray-900 mt-4">
+                    FAQ
+                </h2>
+            </div>
+
+            <div class="space-y-4" x-data="{ open: null }">
+                <!-- FAQ 1 -->
+                <div class="border-2 border-gray-200 rounded-lg overflow-hidden fade-in" style="animation-delay: 0s;">
+                    <button @click="open = open === 1 ? null : 1" class="w-full p-6 flex justify-between items-center hover:bg-orange-50 transition font-bold text-left">
+                        <span class="text-gray-900">Ini serius atau asal-asalan?</span>
+                        <span class="text-2xl text-orange-600" x-text="open === 1 ? '−' : '+'"></span>
+                    </button>
+                    <div x-show="open === 1" class="p-6 bg-orange-50 border-t-2 border-gray-200">
+                        <p class="text-gray-700 leading-relaxed">
+                            Ini serius banget. Dipandu oleh praktisi Coretax, akademisi hukum pajak, dan praktisi sistem. Setiap peserta praktik hands-on, bukan nonton video. Banyak yang jadi konsultan Coretax profesional setelah selesai. Rating kami 4.9/5 dari 500+ alumni.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="border-2 border-gray-200 rounded-lg overflow-hidden fade-in" style="animation-delay: 0.1s;">
+                    <button @click="open = open === 2 ? null : 2" class="w-full p-6 flex justify-between items-center hover:bg-orange-50 transition font-bold text-left">
+                        <span class="text-gray-900">Akses 6 bulan bener-bener full?</span>
+                        <span class="text-2xl text-orange-600" x-text="open === 2 ? '−' : '+'"></span>
+                    </button>
+                    <div x-show="open === 2" class="p-6 bg-orange-50 border-t-2 border-gray-200">
+                        <p class="text-gray-700 leading-relaxed">
+                            Iya, 6 bulan penuh dari tanggal akses aktivasi. Kamu bisa latihan kapan saja: PPh OP, PPh Badan, Pasal 25/29, rekonsiliasi fiskal, semuanya bisa diulang berkali-kali. Banyak peserta yang pakai sampai jam terakhir.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="border-2 border-gray-200 rounded-lg overflow-hidden fade-in" style="animation-delay: 0.2s;">
+                    <button @click="open = open === 3 ? null : 3" class="w-full p-6 flex justify-between items-center hover:bg-orange-50 transition font-bold text-left">
+                        <span class="text-gray-900">Kalau saya belum pernah pakai Coretax?</span>
+                        <span class="text-2xl text-orange-600" x-text="open === 3 ? '−' : '+'"></span>
+                    </button>
+                    <div x-show="open === 3" class="p-6 bg-orange-50 border-t-2 border-gray-200">
+                        <p class="text-gray-700 leading-relaxed">
+                            Justru cocok untuk kamu. Kami mulai dari ZERO. Materi mulai dari cara akses, menu apa itu, alur mana dulu. Banyak yang cari pelatihan "dari nol" seperti ini. Instruktur sabar dan detail menjelaskan.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="border-2 border-gray-200 rounded-lg overflow-hidden fade-in" style="animation-delay: 0.3s;">
+                    <button @click="open = open === 4 ? null : 4" class="w-full p-6 flex justify-between items-center hover:bg-orange-50 transition font-bold text-left">
+                        <span class="text-gray-900">Sertifikat ini diakui?</span>
+                        <span class="text-2xl text-orange-600" x-text="open === 4 ? '−' : '+'"></span>
+                    </button>
+                    <div x-show="open === 4" class="p-6 bg-orange-50 border-t-2 border-gray-200">
+                        <p class="text-gray-700 leading-relaxed">
+                            Sertifikat Kompetensi dari AsaBisa. Lebih penting adalah skill yang kamu dapat. Banyak alumni yang pakai ini untuk upgrade salary di kantor atau jadi konsultan independen. Skill itu lebih valuable daripada sertifikat.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="border-2 border-gray-200 rounded-lg overflow-hidden fade-in" style="animation-delay: 0.4s;">
+                    <button @click="open = open === 5 ? null : 5" class="w-full p-6 flex justify-between items-center hover:bg-orange-50 transition font-bold text-left">
+                        <span class="text-gray-900">Ada pertanyaan saat praktik?</span>
+                        <span class="text-2xl text-orange-600" x-text="open === 5 ? '−' : '+'"></span>
+                    </button>
+                    <div x-show="open === 5" class="p-6 bg-orange-50 border-t-2 border-gray-200">
+                        <p class="text-gray-700 leading-relaxed">
+                            Ada forum Q&A, grup WhatsApp alumni, dan sesi follow-up. Selama 6 bulan akses, kamu bisa tanya kapan saja. Instruktur dan alumni yang sudah expert akan membantu. Respon cepat, biasanya dalam 24 jam.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="border-2 border-gray-200 rounded-lg overflow-hidden fade-in" style="animation-delay: 0.5s;">
+                    <button @click="open = open === 6 ? null : 6" class="w-full p-6 flex justify-between items-center hover:bg-orange-50 transition font-bold text-left">
+                        <span class="text-gray-900">Berapa jam per hari harus praktik?</span>
+                        <span class="text-2xl text-orange-600" x-text="open === 6 ? '−' : '+'"></span>
+                    </button>
+                    <div x-show="open === 6" class="p-6 bg-orange-50 border-t-2 border-gray-200">
+                        <p class="text-gray-700 leading-relaxed">
+                            Fleksibel 100%. Pelatihan live 2 hari full (8 jam/hari). Setelah itu, akses PrakTax 6 bulan bisa kamu pakai kapan saja. Banyak yang praktik 1-2 jam sehari, ada yang setor intense 5 jam sehari. Sesuai ritme kamu.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="py-24 px-4 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <div class="badge-hot" style="justify-content: center;">⭐ TESTIMONI ALUMNI</div>
+                <h2 class="text-5xl md:text-6xl font-black text-gray-900 mt-4">
+                    Apa Kata <span class="gradient-text">Mereka?</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card-hover bg-gradient-to-br from-orange-50 to-yellow-50 p-8 rounded-2xl border-2 border-orange-200 shadow-lg fade-in" style="animation-delay: 0s;">
+                    <div class="flex items-center gap-1 mb-6">
+                        <span class="text-yellow-500 text-2xl">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic leading-relaxed text-lg">
+                        "Awalnya takut banget pakai Coretax. Setelah PrakTax, bukan cuma paham tapi jadi confident ambil klien. Sekarang income dari klien pajak naik 300%."
+                    </p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-orange-200">
+                        <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full"></div>
+                        <div>
+                            <p class="font-bold text-gray-900">Rini Wijaya</p>
+                            <p class="text-sm text-gray-600">Akuntan, Jakarta</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-hover bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl border-2 border-blue-200 shadow-lg fade-in" style="animation-delay: 0.1s;">
+                    <div class="flex items-center gap-1 mb-6">
+                        <span class="text-yellow-500 text-2xl">⭐⭐⭐��⭐</span>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic leading-relaxed text-lg">
+                        "Praktik 6 bulan itu emas. Bisa coba berkali-kali sampai benar-benar master. Tidak takut lagi kalau ada klien dengan kasus rumit atau special case."
+                    </p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-blue-200">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-500 rounded-full"></div>
+                        <div>
+                            <p class="font-bold text-gray-900">Budi Santoso</p>
+                            <p class="text-sm text-gray-600">Staff Pajak, Surabaya</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-hover bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl border-2 border-green-200 shadow-lg fade-in" style="animation-delay: 0.2s;">
+                    <div class="flex items-center gap-1 mb-6">
+                        <span class="text-yellow-500 text-2xl">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic leading-relaxed text-lg">
+                        "Investasi terbaik tahun ini. 599 ribu untuk skill yang bisa generate puluhan juta. Instrukturnya sabar, materi lengkap, support responsif. 10/10."
+                    </p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-green-200">
+                        <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-green-500 rounded-full"></div>
+                        <div>
+                            <p class="font-bold text-gray-900">Siti Nurhaliza</p>
+                            <p class="text-sm text-gray-600">Konsultan Pajak, Bandung</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section Final -->
+    <section id="daftar" class="py-32 px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-orange-900 text-white relative overflow-hidden">
+        <div class="absolute top-20 left-10 w-96 h-96 bg-orange-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 float-animation"></div>
+        
+        <div class="max-w-3xl mx-auto text-center relative z-10">
+            <h2 class="text-5xl md:text-6xl lg:text-7xl font-black mb-8 slide-in-left">
+                2026 Bukan
