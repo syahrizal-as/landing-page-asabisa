@@ -11,150 +11,109 @@ memerlukan transformasi digital yang mengintegrasikan seluruh lini
 bisnis, mulai dari pencatatan keuangan hingga manajemen aset dan sumber
 daya manusia.
 
-Sistem ini diharapkan dapat: - Mengurangi kesalahan input manual -
-Menyediakan data secara real-time - Meningkatkan transparansi dan
-akuntabilitas - Mendukung pengambilan keputusan berbasis data
-
 ------------------------------------------------------------------------
 
 ## 2. MAKSUD DAN TUJUAN
 
-### 2.1 Membangun Ekosistem Digital
-
-Mengintegrasikan 7 modul utama dalam satu kesatuan sistem terpusat: -
-Sistem Informasi Akuntansi (SIA) - Billing System - Aplikasi Baca
-Meter - Aplikasi Absensi - Sistem Informasi SDM - Manajemen Aset -
-Monitoring & Reporting Dashboard
-
-### 2.2 Akurasi Data
-
-Menjamin pelaporan keuangan sesuai standar akuntansi yang berlaku dan
-meminimalisir human error.
-
-### 2.3 Efisiensi Operasional Lapangan
-
-Mempermudah petugas dalam pencatatan angka meter dan absensi melalui
-perangkat mobile berbasis Android.
-
-### 2.4 Optimalisasi Aset
-
-Melakukan pendataan dan pemeliharaan aset secara terpusat dengan sistem
-barcode.
+-   Integrasi 7 Modul Sistem dalam satu platform terpusat
+-   Akurasi laporan keuangan sesuai standar akuntansi
+-   Efisiensi operasional lapangan berbasis mobile
+-   Optimalisasi pengelolaan aset berbasis barcode
 
 ------------------------------------------------------------------------
 
 ## 3. RUANG LINGKUP PEKERJAAN
 
-Penyedia jasa wajib mengembangkan dan mengimplementasikan modul-modul
-berikut:
-
 ### 3.1 SIA Berbasis Web
 
--   Pencatatan jurnal umum
--   Buku besar
--   Neraca saldo
--   Laporan laba rugi
--   Laporan arus kas
--   Neraca
+-   Jurnal umum, buku besar, neraca saldo
+-   Laporan laba rugi, arus kas, neraca
 
 ### 3.2 Billing System
 
--   Pengelolaan data pelanggan
--   Perhitungan rekening air otomatis
--   Monitoring tunggakan/piutang
+-   Pengelolaan pelanggan
+-   Perhitungan rekening otomatis
+-   Monitoring tunggakan
 -   Integrasi pembayaran
--   Rekap laporan bulanan
 
 ### 3.3 Aplikasi Baca Meter (Android)
 
 -   Input angka meter digital
--   Foto kondisi meter
--   GPS tracking lokasi
--   Sinkronisasi otomatis ke sistem billing
+-   Foto meter & GPS tracking
+-   Sinkronisasi billing
 
 ### 3.4 Aplikasi Absensi (Android)
 
--   Absensi berbasis GPS
--   Foto selfie / pengenalan wajah
--   Rekap kehadiran otomatis
--   Integrasi dengan sistem payroll
+-   GPS & selfie recognition
+-   Rekap otomatis ke payroll
 
 ### 3.5 Sistem Informasi SDM
 
--   Data kepegawaian
--   Penggajian (Payroll)
--   Pengelolaan cuti & izin
--   Penilaian kinerja (KPI)
+-   Data pegawai
+-   Payroll
+-   KPI & evaluasi
 
 ### 3.6 Manajemen & Pemeliharaan Aset
 
--   Inventarisasi aset berbasis barcode
--   Monitoring aset
--   Jadwal pemeliharaan preventif
--   Pencatatan pemeliharaan korektif
--   Laporan kondisi aset
+-   Inventaris barcode
+-   Preventive & corrective maintenance
 
 ------------------------------------------------------------------------
 
-## 4. SPESIFIKASI TEKNIS DASAR
+## 4. SPESIFIKASI TEKNIS
 
-Sistem harus dibangun dan dijalankan di atas infrastruktur berikut:
-
-### 4.1 Teknologi Backend
-
--   Bahasa Pemrograman: PHP (Laravel Framework)
--   Basis Data: Microsoft SQL Server 2019
-
-### 4.2 Infrastruktur Server
-
--   Server: HP Proliant DL380 Gen 10
--   Processor: Intel Xeon Silver
--   RAM: 64 GB
--   Storage: 4 TB
--   Sistem Operasi: Windows Server 2019
--   Web Server: Internet Information Services (IIS)
-
-### 4.3 Teknologi Frontend
-
--   HTML5
--   CSS3
--   JavaScript
--   Responsive design (Desktop & Mobile)
+-   Backend: PHP Laravel
+-   Database: SQL Server 2019
+-   Server: HP Proliant DL380 Gen 10 (Xeon Silver, RAM 64GB, Storage
+    4TB)
+-   OS: Windows Server 2019 + IIS
+-   Frontend: HTML5, CSS3, JavaScript (Responsive)
 
 ------------------------------------------------------------------------
 
 ## 5. JANGKA WAKTU PELAKSANAAN
 
-Total waktu pelaksanaan pekerjaan adalah:
+Total waktu: **6 Bulan (180 Hari Kalender)**
 
-**6 (Enam) Bulan / 180 Hari Kalender**, meliputi:
-
-1.  Analisis Kebutuhan
-2.  Perancangan Sistem (System Design)
-3.  Pengembangan Aplikasi
-4.  Pengujian (Testing & QA)
-5.  Implementasi & Deployment
-6.  Pelatihan Pengguna (User Training)
-7.  Serah Terima Sistem
+Tahapan: 1. Analisis 2. Design System 3. Development 4. Testing & QA 5.
+Deployment 6. Training & Serah Terima
 
 ------------------------------------------------------------------------
 
-## 6. KELUARAN (DELIVERABLES)
+## 6. ESTIMASI ANGGARAN (BUDGETING)
 
-Penyedia jasa wajib menyerahkan:
+Total Estimasi Proyek: **Rp 170,000,000**
 
-1.  Sistem aplikasi yang telah terinstalasi di server PDAM
-2.  Source code aplikasi secara penuh
-3.  Dokumentasi teknis dan flowchart sistem
-4.  Buku panduan penggunaan (User Manual)
-5.  Laporan hasil pelatihan pengguna
-6.  Dokumen berita acara serah terima (BAST)
+### Breakdown Per Modul:
+
+-   SIA Berbasis Web: Rp 30,000,000
+-   Billing System: Rp 35,000,000
+-   Aplikasi Baca Meter (Android): Rp 25,000,000
+-   Aplikasi Absensi (Android): Rp 20,000,000
+-   Sistem Informasi SDM & Payroll: Rp 25,000,000
+-   Manajemen & Pemeliharaan Aset: Rp 20,000,000
+-   Integrasi, Testing & Deployment: Rp 15,000,000
+
+### Catatan:
+
+-   Estimasi sudah termasuk analisis, development, testing, dan
+    dokumentasi.
+-   Belum termasuk biaya server tambahan, lisensi pihak ketiga, atau
+    integrasi payment gateway eksternal (jika ada).
+-   Skema pembayaran dapat dibagi bertahap berdasarkan milestone.
 
 ------------------------------------------------------------------------
 
-## PENUTUP
+## 7. DELIVERABLES
 
-Dokumen Kerangka Acuan Kerja (KAK) ini menjadi dasar pelaksanaan
-pengembangan Sistem Terintegrasi PDAM dan menjadi acuan dalam
-pelaksanaan pekerjaan sesuai dengan ruang lingkup dan spesifikasi teknis
-yang telah ditetapkan.
+1.  Sistem terinstalasi di server PDAM
+2.  Source code full
+3.  Dokumentasi teknis & flowchart
+4.  User manual
+5.  Laporan pelatihan
+6.  Berita Acara Serah Terima (BAST)
+
+------------------------------------------------------------------------
+
+Dokumen ini menjadi acuan resmi pelaksanaan pengembangan Sistem
+Terintegrasi PDAM.
