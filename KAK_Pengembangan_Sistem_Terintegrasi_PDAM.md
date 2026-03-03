@@ -63,17 +63,16 @@ daya manusia.
 ## 4. SPESIFIKASI TEKNIS
 
 -   Backend: PHP Laravel
--   Database: SQL Server 2019
--   Server: HP Proliant DL380 Gen 10 (Xeon Silver, RAM 64GB, Storage
-    4TB)
--   OS: Windows Server 2019 + IIS
--   Frontend: HTML5, CSS3, JavaScript (Responsive)
+-   Database: MSQL
+-   Server: Nginx
+-   OS: Ubuntu 24.04
+-   Frontend: HTML5, CSS3, JavaScript (Vue Js)
 
 ------------------------------------------------------------------------
 
 ## 5. JANGKA WAKTU PELAKSANAAN
 
-Total waktu: **6 Bulan (180 Hari Kalender)**
+Total waktu: **4 Bulan (135 Hari Kalender)**
 
 Tahapan: 1. Analisis 2. Design System 3. Development 4. Testing & QA 5.
 Deployment 6. Training & Serah Terima
